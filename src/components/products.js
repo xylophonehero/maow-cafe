@@ -18,12 +18,17 @@ const Products = () =>
       sku: form.get("sku"),
       quantity: form.get("quantity")
     }
-    // const response = await fetch('.netlify/functions/create-checkout.js',
-    //   {
-    //     method: 'POST',
+    const response = await fetch('/api/create-checkout.js',
+      {
+        method: 'POST',
+        header: {
+          'ContentType': 'application/json',
+        },
+        body: JSON.stringify(data)
+      }
+    ).then(res => res.json())
 
-    //   }
-    // )
+    console.log(response)
   }
 
   return (
